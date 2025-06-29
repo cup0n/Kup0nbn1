@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ambil Kupon BRI</title>
+  <link rel="stylesheet" href="style4.css" />
+</head>
+<body onload="bacaTeks()">
+  <div class="card">
+    <img src="pin.jpg" alt="BRI Festival" style="width:100%; border-radius: 12px;" />
+    
+    <div id="pesan" class="teks">
+      Terimakasih Telah Mendaftar Dilayanan Bank BRI Festival, Pendaftaran Anda Sedang Diproses, 
+      Sesaat Lagi Anda Akan Dihubungi Oleh Pihak Bank BRI, Untuk Proses Cetak Kode Kupon Undian Anda.
+    </div>
+  </div>
+
+  <script>
+    function bacaTeks() {
+      const teks = document.getElementById("pesan").innerText;
+      const suara = new SpeechSynthesisUtterance(teks);
+      suara.lang = 'id-ID';
+      window.speechSynthesis.cancel(); // hentikan jika sedang bicara
+      window.speechSynthesis.speak(suara);
+    }
+  </script>
+</body>
+</html>

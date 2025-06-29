@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  padding: 20px 16px;
+  box-sizing: border-box;
+}
+
+.promo-img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Tombol ada di dalam kotak,tepat setelah paragraf*/
+.button-kupon {
+  display: inline-block;
+  margin-top: 550px;
+  padding: 8px 20px;
+  background-color: #1E90FF;
+  color: white;
+  font-size: 25px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.button-kupon:hover {
+  background-color: #0056b3;
+}
+
+/* Gambar latar belakang */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+  background-image: url('lin.webp'); /* GANTI sesuai nama file kamu */
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+}
